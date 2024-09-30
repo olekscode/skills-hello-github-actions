@@ -7,12 +7,15 @@
 <?define guid="2d6e8d12-9065-46e8-9c7b-d0f8f054c248"?>
 
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Product Id="*" Name="$(var.name)" Language="1033" Version="$(var.version)" Manufacturer="$(var.publisher)" UpgradeCode="$(var.guid)">
-    <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
+  <Package Name="$(var.name)" Manufacturer="$(var.publisher)" Version="$(var.version)" UpgradeCode="$(var.guid)" Scope="perMachine">
 
     <Media Id="1" Cabinet="setup.cab" EmbedCab="yes" />
 
-    <Directory Id="TARGETDIR" Name="SourceDir">
+    <Feature Id="InstallFeature" Title="Install Feature" Level="1">
+      <ComponentRef Id="MainExecutable" />
+    </Feature>
+
+    <StandardDirectory Id="CommonAppDataFolder">
       <Directory Id="ProgramFilesFolder">
         <Directory Id="INSTALLFOLDER" Name="MyAppFolder">
           <Component Id="MainExecutable" Guid="$(var.guid)">
@@ -20,10 +23,7 @@
           </Component>
         </Directory>
       </Directory>
-    </Directory>
+    </StandardDirectory>
 
-    <Feature Id="MainFeature" Title="My Application" Level="1">
-      <ComponentRef Id="MainExecutable" />
-    </Feature>
-  </Product>
+  </Package>
 </Wix>
