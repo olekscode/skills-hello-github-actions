@@ -20,5 +20,12 @@ jobs:
     - name: Install WiX
       run: dotnet tool install --global wix
 
-    - name: Test Installation
-      run: wix build scripts/installers/cormas-windows.wsx
+    - name: Build the Application
+      run: |
+        echo "#include <stdio.h>`n`nint main(int argc, char* argv[]) {`n`tprintf(""Hello world\n);""`n`treturn 0;`n}" > hello.c
+        cat hello.c
+        gcc hello.c -o cormas.exe
+        .\cormas.exe
+
+    - name: Build MSI Installer
+      run: wix build scripts\installers\cormas-windows.wsx
