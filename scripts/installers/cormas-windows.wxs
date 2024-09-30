@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?define name="Cormas"?>
+<?define exe="cormas.exe"?>
+<?define path=""?>
+<?define version="1.0.0"?>
+<?define publisher="Cormas Community"?>
+<?define guid="2d6e8d12-9065-46e8-9c7b-d0f8f054c248"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="$(var.name)" Language="1033" Version="$(var.version)" Manufacturer="$(var.publisher)" UpgradeCode="$(var.guid)">
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
+
+    <Media Id="1" Cabinet="setup.cab" EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="MyAppFolder">
+          <Component Id="MainExecutable" Guid="$(var.guid)">
+            <File Source="$(var.exe)" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="MainFeature" Title="My Application" Level="1">
+      <ComponentRef Id="MainExecutable" />
+    </Feature>
+  </Product>
+</Wix>
