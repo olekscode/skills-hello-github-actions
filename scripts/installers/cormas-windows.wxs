@@ -12,15 +12,17 @@
     <Media Id="1" Cabinet="setup.cab" EmbedCab="yes" />
 
     <Feature Id="InstallFeature" Title="Install Feature" Level="1">
-      <ComponentRef Id="MainExecutable" />
+      <ComponentGroupRef Id="MainExecutable" />
     </Feature>
 
+    <ComponentGroup Id="MainExecutable" Directory="INSTALLFOLDER">
+      <Component>
+        <File Source="$(var.exe)" />
+      </Component>
+    </ComponentGroup>
+
     <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="INSTALLFOLDER" Name="Cormas">
-        <Component Id="MainExecutable" Guid="$(var.guid)">
-          <File Source="$(var.exe)" />
-        </Component>
-      </Directory>
+      <Directory Id="INSTALLFOLDER" Name="!(bind.Property.ProductName)" />
     </StandardDirectory>
 
   </Package>
