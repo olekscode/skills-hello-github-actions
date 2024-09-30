@@ -16,12 +16,10 @@
     </Feature>
 
     <StandardDirectory Id="CommonAppDataFolder">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="MyAppFolder">
-          <Component Id="MainExecutable" Guid="$(var.guid)">
-            <File Source="$(var.exe)" />
-          </Component>
-        </Directory>
+      <Directory Id="INSTALLFOLDER" Name="Cormas">
+        <Component Id="MainExecutable" Guid="$(var.guid)">
+          <File Source="$(var.exe)" />
+        </Component>
       </Directory>
     </StandardDirectory>
 
