@@ -14,11 +14,11 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    - name: Install WiX Toolset
-      run: |
-        choco install wixtoolset --version 3.14
-        set "WIX=C:\Program Files (x86)\WiX Toolset v3.14\bin"
+    # - name: Install WiX Toolset
+    #   run: |
+    #     choco install wixtoolset --version 3.14
+    #     set "WIX=C:\Program Files (x86)\WiX Toolset v3.14\bin"
 
     - name: Test Installation
       run: |
-        &"$env.WIX\candle.exe"
+        wix build
