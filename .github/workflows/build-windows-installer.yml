@@ -28,6 +28,10 @@ jobs:
         .\cormas.exe
 
     - name: Build MSI Installer
-      run: |
-        ls scripts\installers
-        wix build .\scripts\installers\cormas-windows.wsx
+      run: wix build .\scripts\installers\cormas-windows.wxs
+
+    - name: Upload MSI Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: cormas-windows
+        path: cormas-windows.msi
