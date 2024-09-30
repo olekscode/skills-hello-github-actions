@@ -17,4 +17,8 @@ jobs:
     - name: Install WiX Toolset
       run: |
         choco install wixtoolset --version 3.14
-        export "WIX=C:\Program Files (x86)\WiX Toolset v3.14\bin"
+        set "WIX=C:\Program Files (x86)\WiX Toolset v3.14\bin"
+
+    - name: Test Installation
+      run: |
+        &"$env.WIX\candle.exe"
