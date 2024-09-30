@@ -11,19 +11,14 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+      
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.1
 
     - name: Install WiX
       run: dotnet tool install --global wix
-    
-    # - name: Checkout Repository
-    #   uses: actions/checkout@v3
-
-    # - name: Install WiX Toolset
-    #   run: |
-    #     choco install wixtoolset --version 3.14
-    #     set "WIX=C:\Program Files (x86)\WiX Toolset v3.14\bin"
 
     - name: Test Installation
-      run: wix build
+      run: wix build scripts/installers/cormas-windows.wsx
