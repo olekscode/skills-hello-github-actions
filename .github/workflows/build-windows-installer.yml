@@ -22,7 +22,7 @@ jobs:
 
     - name: Build the Application
       run: |
-        echo "#include <stdio.h>`n`nint main(int argc, char* argv[]) {`n`tprintf(""Hello world\n);""`n`treturn 0;`n}" > hello.c
+        echo "#include <stdio.h>`n`nint main(int argc, char* argv[]) {`n`tprintf(""Hello world\n"");`n`treturn 0;`n}" > hello.c
         cat hello.c
         gcc hello.c -o cormas.exe
         .\cormas.exe
