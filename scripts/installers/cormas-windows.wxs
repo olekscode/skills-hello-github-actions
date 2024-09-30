@@ -15,15 +15,13 @@
       <ComponentRef Id="MainExecutable" />
     </Feature>
 
-    <Fragment>
-      <StandardDirectory Id="ProgramFiles6432Folder">
-        <Directory Id="INSTALLFOLDER" Name="Cormas">
-          <Component Id="MainExecutable" Guid="$(var.guid)">
-            <File Source="$(var.exe)" />
-          </Component>
-        </Directory>
-      </StandardDirectory>
-    </Fragment>
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="INSTALLFOLDER" Name="Cormas">
+        <Component Id="MainExecutable" Guid="$(var.guid)">
+          <File Source="$(var.exe)" />
+        </Component>
+      </Directory>
+    </StandardDirectory>
 
   </Package>
 </Wix>
