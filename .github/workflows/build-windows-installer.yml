@@ -28,4 +28,6 @@ jobs:
         .\cormas.exe
 
     - name: Build MSI Installer
-      run: wix build scripts\installers\cormas-windows.wsx
+      run: |
+        ls .
+        wix build skills-hello-github-actions\scripts\installers\cormas-windows.wsx
