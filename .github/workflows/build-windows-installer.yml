@@ -32,7 +32,7 @@ jobs:
         ./pharo/pharo ./pharo/Pharo.image eval "Metacello new repository: 'github://cormas/cormas/'; baseline: 'Cormas'; load. Smalltalk snapshot: true andQuit: true"
       
     - name: Build MSI Installer
-      run: wix build .\installers\windows\cormas-windows.wxs -o cormas.msi
+      run: wix build .\installers\windows\cormas.wxs -o cormas.msi
 
     - name: Upload MSI Artifact
       uses: actions/upload-artifact@v3
