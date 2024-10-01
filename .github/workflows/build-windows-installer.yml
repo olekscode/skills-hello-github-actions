@@ -20,6 +20,14 @@ jobs:
     - name: Install WiX
       run: dotnet tool install --global wix
 
+    - name: Get Pharo Image and VM
+      run: curl https://get.pharo.org/120+vm | bash
+
+    - name: Test Pharo Installation
+      run: |
+        ls .
+        ls .\pharo
+
     - name: Build the Application
       run: |
         echo "#include <stdio.h>`n`nint main(int argc, char* argv[]) {`n`tprintf(""Hello world\n"");`n`treturn 0;`n}" > hello.c
