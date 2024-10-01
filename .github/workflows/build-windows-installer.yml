@@ -27,8 +27,9 @@ jobs:
         cd ..
 
     - name: Load Cormas
-      run: ./pharo/pharo ./pharo/Pharo.image eval "Metacello new repository: 'github://cormas/cormas/'; baseline: 'Cormas'; load. Smalltalk snapshot: true andQuit: true"
-
+      run: |
+        ./pharo/pharo ./pharo/Pharo.image eval "Metacello new repository: 'github://cormas/cormas/'; baseline: 'Cormas'; load. Smalltalk snapshot: true andQuit: true"
+      
     - name: Test Pharo Installation
       run: |
         ls .
