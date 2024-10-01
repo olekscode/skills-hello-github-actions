@@ -16,13 +16,14 @@
     </Feature>
 
     <ComponentGroup Id="MainExecutable" Directory="INSTALLFOLDER">
-      <Component>
-        <File Source="$(var.exe)" />
-      </Component>
+      <File Source="$(var.exe)" />
+      <Files Include="pharo\**" Directory="PharoDir"></Files>
     </ComponentGroup>
 
     <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="INSTALLFOLDER" Name="!(bind.Property.ProductName)" />
+      <Directory Id="INSTALLFOLDER" Name="!(bind.Property.ProductName)">
+        <Directory Id="PharoDir" Name="pharo" />
+      </Directory>
     </StandardDirectory>
 
   </Package>
