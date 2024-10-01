@@ -22,7 +22,8 @@ jobs:
 
     - name: Get Pharo Image and VM
       run: |
-        mkdir pharo & cd pharo
+        mkdir pharo
+        cd pharo
         curl https://get.pharo.org/120+vm | bash
         cd ..
 
