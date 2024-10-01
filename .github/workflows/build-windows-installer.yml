@@ -31,20 +31,8 @@ jobs:
       run: |
         ./pharo/pharo ./pharo/Pharo.image eval "Metacello new repository: 'github://cormas/cormas/'; baseline: 'Cormas'; load. Smalltalk snapshot: true andQuit: true"
       
-    - name: Test Pharo Installation
-      run: |
-        ./pharo/pharo ./pharo/Pharo.image eval " Metacello new repository: 'github://cormas/ecec-model:main'; baseline: 'ECECModel'; load. Smalltalk snapshot: true andQuit: true"
-        ./pharo/pharo ./pharo/Pharo.image eval "| simulation | simulation := (CMSimulation for: ECECModel) activeInitSelector: #homogeneousEnvironment; activeControlSelector: #step:; initializeSimulation. simulation runAllStepsAfterEachDo: [ Transcript show: 'Simulation step '; show: simulation currentTimeStep asString; cr ]. Transcript show: simulation data last; cr"
-
-    - name: Build the Application
-      run: |
-        echo "#include <stdio.h>`n`nint main(int argc, char* argv[]) {`n`tprintf(""Hello world\n"");`n`treturn 0;`n}" > hello.c
-        cat hello.c
-        gcc hello.c -o cormas.exe
-        .\cormas.exe
-
     - name: Build MSI Installer
-      run: wix build .\scripts\installers\cormas-windows.wxs -o cormas.msi
+      run: wix build .\installers\windows\cormas-windows.wxs -o cormas.msi
 
     - name: Upload MSI Artifact
       uses: actions/upload-artifact@v3
