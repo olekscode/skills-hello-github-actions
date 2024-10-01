@@ -21,7 +21,13 @@ jobs:
       run: dotnet tool install --global wix
 
     - name: Get Pharo Image and VM
-      run: curl https://get.pharo.org/120+vm | bash
+      run: |
+        mkdir pharo & cd pharo
+        curl https://get.pharo.org/120+vm | bash
+        cd ..
+
+    - name: Load Cormas
+      run: ./pharo/pharo ./pharo/Pharo.image eval "Metacello new repository: 'github://cormas/cormas/'; baseline: 'Cormas'; load. Smalltalk snapshot: true andQuit: true"
 
     - name: Test Pharo Installation
       run: |
