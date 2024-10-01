@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?define name="Cormas"?>
-<?define exe="installers\windows\cormas"?>
+<?define exe="installers\windows\cormas.bat"?>
 <?define path=""?>
 <?define version="1.0.0"?>
 <?define publisher="Cormas Community"?>
