@@ -32,10 +32,16 @@ jobs:
         ./pharo/pharo ./pharo/Pharo.image eval "Metacello new repository: 'github://cormas/cormas/'; baseline: 'Cormas'; load. Smalltalk snapshot: true andQuit: true"
       
     - name: Build MSI Installer
-      run: wix build .\installers\windows\cormas.wxs -o cormas.msi
+      run: |
+        wix build .\installers\windows\cormas.wxs -o cormas.msi
+        mv cormas.msi artifacts\cormas-windows-64bit.msi  
 
-    - name: Upload MSI Artifact
-      uses: actions/upload-artifact@v3
+    - name: Continuous Release
+      uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        name: cormas-windows
-        path: cormas.msi
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Development Build"
+        files: |
+          artifacts/cormas.msi
