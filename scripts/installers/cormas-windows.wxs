@@ -17,7 +17,7 @@
 
     <ComponentGroup Id="MainExecutable" Directory="INSTALLFOLDER">
       <File Source="$(var.exe)" />
-      <Files Include="pharo\**" Directory="PharoDir"></Files>
+      <Files Include="..\..\pharo\**" Directory="PharoDir"></Files>
     </ComponentGroup>
 
     <StandardDirectory Id="ProgramFiles6432Folder">
