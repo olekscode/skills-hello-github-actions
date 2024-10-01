@@ -33,8 +33,8 @@ jobs:
       
     - name: Test Pharo Installation
       run: |
-        ls .
-        ls .\pharo
+        ./pharo/pharo ./pharo/Pharo.image eval " Metacello new repository: 'github://cormas/ecec-model:main'; baseline: 'ECECModel'; load. Smalltalk snapshot: true andQuit: true"
+        ./pharo/pharo ./pharo/Pharo.image eval "| simulation | simulation := (CMSimulation for: ECECModel) activeInitSelector: #homogeneousEnvironment; activeControlSelector: #step:; initializeSimulation. simulation runAllStepsAfterEachDo: [ Transcript show: 'Simulation step '; show: simulation currentTimeStep asString; cr ]. Transcript show: simulation data last; cr"
 
     - name: Build the Application
       run: |
