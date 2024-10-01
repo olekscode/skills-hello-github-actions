@@ -11,12 +11,19 @@
 
     <Media Id="1" Cabinet="setup.cab" EmbedCab="yes" />
 
+    <Icon Id="icon.ico" SourceFile="..\..\icons\cormas.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="icon.ico"/>
+
     <Feature Id="InstallFeature" Title="Install Feature" Level="1">
       <ComponentGroupRef Id="MainExecutable" />
     </Feature>
 
     <ComponentGroup Id="MainExecutable" Directory="INSTALLFOLDER">
-      <File Source="$(var.exe)" />
+      <File Source="$(var.exe)">
+        <Shortcut Id="StartMenuShortcut" Name="!(bind.Property.ProductName)"
+          Directory="ProgramMenuFolder" Icon="icon.ico"
+          Show="normal" Advertise="yes" />
+      </File>
       <Files Include="..\..\pharo\**" Directory="PharoDir"></Files>
     </ComponentGroup>
 
