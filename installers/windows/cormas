@@ -7,4 +7,4 @@ cd "$DIR"
 DIR=`pwd`
 cd - > /dev/null 
 
-"$DIR"/"pharo/pharo" "$DIR"/"pharo/Pharo.image"
+"$DIR"/"pharo/pharo-ui" "$DIR"/"pharo/Pharo.image"
